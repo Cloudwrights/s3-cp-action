@@ -14,8 +14,5 @@ COALESCED_FILE=$(find ${SOURCE_PATH} -name "${FILE}" -type f -exec basename '{}'
 
 echo "Coalesced file is: $COALESCED_FILE"
 
-(aws s3 ls s3://${AWS_S3_BUCKET}${DESTINATION_KEY}"$COALESCED_FILE") && \
-     rm -rf ~/.aws && \
-     echo "Ooops! Version already exists, aborting upload..." && \
-     exit 1 \
-|| (aws s3 cp ${SOURCE_PATH}"$COALESCED_FILE" s3://${AWS_S3_BUCKET}${DESTINATION_KEY} --region ${AWS_REGION} $*) && rm -rf ~/.aws
+# remove the existence check from the original repo and overwrite the file each time
+(aws s3 cp ${SOURCE_PATH}"$COALESCED_FILE" s3://${AWS_S3_BUCKET}${DESTINATION_KEY} --region ${AWS_REGION} $*) && rm -rf ~/.aws
