@@ -1,6 +1,6 @@
 # GitHub Action to `aws s3 cp` a file to an S3 Bucket 🔄 
 
-This simple action uses the [vanilla AWS CLI](https://docs.aws.amazon.com/cli/index.html) to copy a file to a remote S3 bucket, checking that the file does not already exist there. Ideal for uploading artifact versions in a CD environment.
+This simple action uses the [vanilla AWS CLI](https://docs.aws.amazon.com/cli/index.html) to copy a file to a remote S3 bucket. The only difference from the original repo this was forked from is the existence check - this job overwrites the key every time.
 
 
 
